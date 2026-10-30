@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes for a Brighter Day | Matcha Meadow</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #fbfaf5;
+            color: #293d2d;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: rgba(251, 250, 245, 0.97);
+            border-bottom: 1px solid #e7e8dc;
+        }
+
+        nav {
+            width: min(1080px, 100%);
+            min-height: 70px;
+            margin: auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            color: #3c613e;
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .menu {
+            display: flex;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu a {
+            color: #435346;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .menu a:hover,
+        .menu a:focus-visible,
+        .menu a[aria-current="page"] {
+            color: #6f8c4d;
+        }
+
+        .hero {
+            padding: 86px 24px 78px;
+            background: #e8eddf;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 780px;
+            margin: auto;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: #6c854d;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        blockquote {
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        h1 {
+            margin: 0 0 18px;
+            font-size: clamp(2.7rem, 7vw, 4.5rem);
+            font-weight: 500;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-intro {
+            max-width: 550px;
+            margin: auto;
+            color: #627060;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .quote-card {
+            width: min(760px, calc(100% - 36px));
+            margin: -30px auto 0;
+            padding: 36px 32px 30px;
+            position: relative;
+            border-radius: 10px;
+            background: #fffefa;
+            box-shadow: 0 10px 32px rgba(43, 61, 40, 0.1);
+            text-align: center;
+        }
+
+        .quote-mark {
+            margin: 0;
+            color: #9caf7e;
+            font-family: Georgia, serif;
+            font-size: 4.5rem;
+            line-height: 0.8;
+        }
+
+        blockquote {
+            margin: 12px 0 18px;
+            color: #344c35;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            margin: 0;
+            color: #71806d;
+            font-size: 0.95rem;
+        }
+
+        .quote-button {
+            margin-top: 24px;
+            padding: 11px 17px;
+            border: 1px solid #82956b;
+            border-radius: 5px;
+            background: transparent;
+            color: #3d603d;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .quote-button:hover,
+        .quote-button:focus-visible {
+            background: #edf1e7;
+        }
+
+        .articles {
+            width: min(1000px, 100%);
+            margin: auto;
+            padding: 68px 24px 82px;
+        }
+
+        .articles h2 {
+            margin: 0 0 12px;
+            font-size: 2.2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .section-intro {
+            max-width: 580px;
+            margin: 0 auto 32px;
+            color: #697567;
+            line-height: 1.65;
+            text-align: center;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        article {
+            padding: 24px;
+            border: 1px solid #e9e9df;
+            border-radius: 8px;
+            background: #fffefa;
+        }
+
+        article .category {
+            margin: 0 0 11px;
+            color: #778b5b;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        article h3 {
+            margin: 0 0 12px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        article p:last-child {
+            margin: 0;
+            color: #667263;
+            font-size: 0.96rem;
+            line-height: 1.65;
+        }
+
+        footer {
+            padding: 24px;
+            background: #2b432f;
+            color: #f6f4e8;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 680px) {
+            nav {
+                min-height: 64px;
+                padding: 12px 18px;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .menu {
+                width: 100%;
+                justify-content: space-between;
+                gap: 12px;
+            }
+
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-card {
+                padding: 30px 22px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <a class="brand" href="home.html">Matcha Meadow</a>
+            <ul class="menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blogs.html" aria-current="page">Blogs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <p class="eyebrow">A moment to pause</p>
+                <h1>Notes for a Brighter Day</h1>
+                <p class="hero-intro">A little inspiration for growing at your own pace, finding joy in small things, and making space for what matters.</p>
+            </div>
+        </section>
+
+        <section class="quote-card" aria-label="Motivational quote">
+            <p class="quote-mark" aria-hidden="true">&ldquo;</p>
+            <blockquote id="quote-text">You do not need to bloom all at once; every small step toward the light counts.</blockquote>
+            <p class="quote-author" id="quote-author">A Matcha Meadow reminder</p>
+            <button class="quote-button" id="new-quote" type="button">Another little reminder</button>
+        </section>
+
+        <section class="articles">
+            <p class="eyebrow" style="text-align: center;">Kind thoughts, everyday rituals</p>
+            <h2>Small ideas to carry with you</h2>
+            <p class="section-intro">A few gentle reminders to help you slow down, reset, and keep moving forward.</p>
+            <div class="article-grid">
+                <article>
+                    <p class="category">Make a moment</p>
+                    <h3>Let a small pause be enough</h3>
+                    <p>You do not have to wait for a perfect day to take a breath. A quiet moment with your favorite drink can be a lovely place to begin again.</p>
+                </article>
+                <article>
+                    <p class="category">Keep growing</p>
+                    <h3>Progress can be gentle</h3>
+                    <p>Some days, moving forward looks like one small choice. Give yourself credit for showing up, even when the steps feel tiny.</p>
+                </article>
+                <article>
+                    <p class="category">Find the good</p>
+                    <h3>Notice what is already blooming</h3>
+                    <p>Look for the ordinary things that bring a little warmth: a kind word, a fresh start, or a moment shared with someone you love.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Matcha Meadow. A little kindness for your day.</p>
+    </footer>
+
+    <script>
+        var quotes = [
+            "You do not need to bloom all at once; every small step toward the light counts.",
+            "A fresh start can begin with one kind thought and one small action.",
+            "Make room for joy in the middle of becoming who you want to be.",
+            "Your pace is still progress. Keep going, gently."
+        ];
+        var quoteIndex = 0;
+        var quoteText = document.getElementById("quote-text");
+        var quoteButton = document.getElementById("new-quote");
+
+        quoteButton.addEventListener("click", function () {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            quoteText.textContent = quotes[quoteIndex];
+        });
+    </script>
+</body>
+</html>

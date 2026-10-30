@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matcha Meadow | Matcha &amp; Coffee</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: #293d2d;
+            background: #fbfaf5;
+            font-family: Arial, sans-serif;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: rgba(251, 250, 245, 0.97);
+            border-bottom: 1px solid #e7e8dc;
+        }
+
+        .navigation {
+            width: min(1120px, 100%);
+            min-height: 72px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            color: #31583b;
+            font-family: Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .menu {
+            display: flex;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu a {
+            color: #435346;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .menu a:hover,
+        .menu a:focus-visible {
+            color: #6f8c4d;
+        }
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            min-height: clamp(540px, 72vw, 740px);
+            padding: 88px 24px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #294331;
+            color: #fffdf5;
+        }
+
+        .hero::after {
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(16, 35, 24, 0.88) 0%, rgba(19, 39, 26, 0.68) 48%, rgba(18, 36, 25, 0.08) 100%),
+                linear-gradient(0deg, rgba(19, 38, 27, 0.3), transparent 50%);
+            content: "";
+        }
+
+        .hero-image {
+            position: absolute;
+            z-index: -2;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 54%;
+        }
+
+        .hero-content {
+            width: min(1120px, 100%);
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            margin: 0 0 16px;
+            color: #d3dfb8;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            max-width: 680px;
+            margin: 0 0 20px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(3.2rem, 7vw, 5.6rem);
+            font-weight: 500;
+            letter-spacing: -0.055em;
+            line-height: 0.98;
+        }
+
+        .hero p {
+            max-width: 540px;
+            margin: 0 0 30px;
+            color: rgba(255, 253, 245, 0.86);
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 21px;
+            border: 1px solid #82956b;
+            border-radius: 999px;
+            background: #edf0d8;
+            color: #294331;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 150ms ease, transform 150ms ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: #fffef3;
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            width: min(1080px, 100%);
+            margin: 0 auto;
+            padding: 78px 24px;
+            scroll-margin-top: 80px;
+        }
+
+        .content-section h2 {
+            margin: 0 0 14px;
+            color: #293d2d;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 500;
+        }
+
+        .content-section p {
+            max-width: 680px;
+            color: #667263;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .section-heading {
+            max-width: 680px;
+            margin: 0 auto 34px;
+            text-align: center;
+        }
+
+        .section-heading .eyebrow {
+            color: #6c854d;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            padding: 28px;
+            border: 1px solid #e9e9df;
+            border-radius: 10px;
+            background: #fffefa;
+        }
+
+        .service-card h3 {
+            margin: 0 0 12px;
+            color: #3c613e;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+        }
+
+        .service-card p {
+            margin: 0;
+            font-size: 0.98rem;
+        }
+
+        .about-section {
+            max-width: none;
+            border-top: 1px solid #e7e8dc;
+            border-bottom: 1px solid #e7e8dc;
+            background: #eef0e5;
+        }
+
+        .about-content {
+            width: min(1080px, 100%);
+            margin: 0 auto;
+        }
+
+        .journal-section {
+            text-align: center;
+        }
+
+        .journal-section p {
+            margin: 0 auto 24px;
+        }
+
+        footer {
+            padding: 24px;
+            background: #2b432f;
+            color: #f6f4e8;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 680px) {
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .navigation {
+                min-height: 64px;
+                padding: 12px 18px;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .menu {
+                width: 100%;
+                justify-content: space-between;
+                gap: 16px;
+            }
+
+            .content-section {
+                scroll-margin-top: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navigation" aria-label="Main navigation">
+            <a class="brand" href="#home">Matcha Meadow</a>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#drinks">Our drinks</a></li>
+                <li><a href="#about">Our story</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <img class="hero-image" src="assets/matcha-landing-powder.jpeg" alt="Fresh green matcha powder in a ceramic bowl" fetchpriority="high">
+            <div class="hero-content">
+                <p class="eyebrow">A little green, a little coffee</p>
+                <h1>Find your new favorite kind of cup.</h1>
+                <p>Discover matcha moments, coffee favorites, and a fresh matcha-meets-coffee twist at Matcha Meadow.</p>
+                <a class="button" href="#drinks">Explore the drinks</a>
+            </div>
+        </section>
+
+        <section class="content-section" id="drinks">
+            <div class="section-heading">
+                <p class="eyebrow">Something for your next break</p>
+                <h2>Meet your matcha moment</h2>
+                <p>From a classic whisk to a coffee-inspired pour, explore a few ways to enjoy matcha.</p>
+            </div>
+            <div class="service-list">
+                <article class="service-card">
+                    <h3>Whisked matcha</h3>
+                    <p>Keep it simple with matcha whisked smooth and served just the way you like it.</p>
+                </article>
+                <article class="service-card">
+                    <h3>Matcha latte</h3>
+                    <p>Pair prepared matcha with your choice of milk for a creamy everyday favorite.</p>
+                </article>
+                <article class="service-card">
+                    <h3>Matcha meets coffee</h3>
+                    <p>Try a layered matcha-and-espresso drink for a fresh twist on your usual cup.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="content-section about-content">
+                <p class="eyebrow">Welcome to Matcha Meadow</p>
+                <h2>Made for little everyday rituals.</h2>
+                <p>Take a moment for something green, something familiar, or a mix of both. Find an easy recipe or a little inspiration in our journal.</p>
+                <a class="button" href="blogs.html">Visit the journal</a>
+            </div>
+        </section>
+
+        <section class="content-section journal-section">
+            <p class="eyebrow">Fresh ideas for your next cup</p>
+            <h2>Make room for a matcha moment.</h2>
+            <p>Browse simple matcha tips, drink ideas, and coffee-inspired recipes in the Matcha Meadow journal.</p>
+            <a class="button" href="blogs.html">Read the blog</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Matcha Meadow. Made for your everyday cup.</p>
+    </footer>
+
+</body>
+</html>S

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Landing Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: #203047;
+            background: #dff2df;
+            font-family: Arial, sans-serif;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(32, 48, 71, 0.08);
+        }
+
+        .navigation {
+            width: min(1100px, 100%);
+            min-height: 72px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            color: #286d88;
+            font-size: 1.35rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .menu {
+            display: flex;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu a {
+            color: #43536a;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .menu a:hover,
+        .menu a:focus-visible {
+            color: #286d88;
+        }
+
+        .hero {
+            min-height: 480px;
+            padding: 80px 24px;
+            display: grid;
+            place-items: center;
+            background: #dff2df;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            margin: 0 0 18px;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            line-height: 1.08;
+        }
+
+        .hero p {
+            margin: 0 auto 28px;
+            color: #526278;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 7px;
+            background: #286d88;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: #1e566d;
+        }
+
+        .content-section {
+            width: min(1000px, 100%);
+            margin: 0 auto;
+            padding: 72px 24px;
+            scroll-margin-top: 72px;
+        }
+
+        .content-section h2 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        .content-section p {
+            max-width: 680px;
+            color: #526278;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        #services {
+            border-top: 1px solid #e1e8ef;
+            border-bottom: 1px solid #e1e8ef;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
+            margin-top: 28px;
+        }
+
+        .service-card {
+            padding: 22px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 4px 16px rgba(32, 48, 71, 0.06);
+        }
+
+        .service-card h3 {
+            margin: 0 0 10px;
+            color: #286d88;
+        }
+
+        .service-card p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        footer {
+            padding: 24px;
+            background: #203047;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 520px) {
+            .navigation {
+                min-height: 64px;
+                padding: 12px 18px;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .menu {
+                width: 100%;
+                justify-content: space-between;
+                gap: 16px;
+            }
+
+            .content-section {
+                scroll-margin-top: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navigation" aria-label="Main navigation">
+            <a class="brand" href="#home">Brightside</a>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Make your next idea happen.</h1>
+                <p>Thoughtful services and useful insights to help you take your next step with confidence.</p>
+                <a class="button" href="#services">Explore our services</a>
+            </div>
+        </section>
+
+        <section class="content-section" id="services">
+            <h2>Services</h2>
+            <p>We bring ideas to life with practical support, clear communication, and a focus on what matters to you.</p>
+            <div class="service-list">
+                <article class="service-card">
+                    <h3>Planning</h3>
+                    <p>Turn your goals into a simple, achievable plan.</p>
+                </article>
+                <article class="service-card">
+                    <h3>Creative</h3>
+                    <p>Shape your ideas into engaging experiences.</p>
+                </article>
+                <article class="service-card">
+                    <h3>Guidance</h3>
+                    <p>Get thoughtful advice for your next big step.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="content-section" id="blogs">
+            <h2>From the blog</h2>
+            <p>Explore ideas, tips, and inspiration to help you learn, create, and move forward.</p>
+            <a class="button" href="#blogs">Read our latest posts</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Brightside. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.menu a, .brand, .hero .button').forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                var target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    history.replaceState(null, '', link.getAttribute('href'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>S

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matcha Meadow | Matcha Drinks</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #fbfaf5;
+            color: #24392b;
+            font-family: Arial, sans-serif;
+        }
+
+        .topbar {
+            background: #263c2b;
+            color: #f7f4e8;
+            padding: 9px 16px;
+            text-align: center;
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: rgba(251, 250, 245, 0.96);
+            border-bottom: 1px solid #e8e7db;
+        }
+
+        nav {
+            width: min(1120px, 100%);
+            min-height: 72px;
+            margin: auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            color: #31583b;
+            font-family: Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #344638;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: #688c4a;
+        }
+
+        .cart {
+            padding: 9px 14px;
+            border: 1px solid #bdcbb3;
+            border-radius: 999px;
+            background: transparent;
+            color: #31583b;
+            font: inherit;
+        }
+
+        .hero {
+            width: min(1120px, 100%);
+            min-height: 500px;
+            margin: auto;
+            padding: 76px 24px;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            align-items: center;
+            gap: 44px;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: #68834c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        h1 {
+            max-width: 600px;
+            margin: 0 0 20px;
+            font-size: clamp(3rem, 7vw, 5.4rem);
+            font-weight: 500;
+            letter-spacing: -0.045em;
+            line-height: 0.98;
+        }
+
+        .hero-copy {
+            max-width: 470px;
+            margin: 0 0 28px;
+            color: #647064;
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 21px;
+            border: 0;
+            border-radius: 5px;
+            background: #476a3d;
+            color: #fff;
+            font: inherit;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 150ms ease, transform 150ms ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: #345332;
+            transform: translateY(-1px);
+        }
+
+        .hero-art {
+            min-height: 360px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 48% 48% 8px 8px;
+            background: #e4ead7;
+            position: relative;
+        }
+
+        .hero-art::before,
+        .hero-art::after {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 1px solid rgba(71, 106, 61, 0.18);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .hero-art::after {
+            width: 290px;
+            height: 290px;
+        }
+
+        .drink {
+            position: relative;
+            z-index: 1;
+            width: 190px;
+            height: 260px;
+            margin-top: 26px;
+            border: 5px solid rgba(255, 255, 255, 0.82);
+            border-top: 0;
+            border-radius: 12px 12px 42px 42px;
+            background: linear-gradient(to bottom, #f5f1df 0 25%, #b3c77d 25% 31%, #789a4d 31% 100%);
+            box-shadow: 0 22px 30px rgba(49, 68, 42, 0.18);
+            transform: rotate(-5deg);
+        }
+
+        .drink::before {
+            position: absolute;
+            top: -13px;
+            left: -9px;
+            width: calc(100% + 18px);
+            height: 20px;
+            border: 5px solid #fff;
+            border-radius: 50%;
+            background: #e8e2cc;
+            content: "";
+        }
+
+        .drink::after {
+            position: absolute;
+            top: -61px;
+            left: 108px;
+            width: 10px;
+            height: 80px;
+            border-radius: 8px;
+            background: #f4f0df;
+            content: "";
+            transform: rotate(8deg);
+        }
+
+        .drink-label {
+            position: absolute;
+            top: 120px;
+            left: 0;
+            width: 100%;
+            color: #f8f5e7;
+            font-family: Georgia, serif;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        .section {
+            padding: 74px 24px;
+            scroll-margin-top: 72px;
+        }
+
+        .section-inner {
+            width: min(1050px, 100%);
+            margin: auto;
+        }
+
+        .menu-section {
+            background: #f0f1e6;
+        }
+
+        .section-heading {
+            margin: 0 0 10px;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .section-intro {
+            max-width: 560px;
+            margin: 0 auto 36px;
+            color: #697466;
+            line-height: 1.65;
+            text-align: center;
+        }
+
+        .drink-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .drink-card {
+            padding: 18px;
+            border-radius: 8px;
+            background: #fffefa;
+            box-shadow: 0 5px 20px rgba(48, 64, 42, 0.06);
+        }
+
+        .card-art {
+            min-height: 185px;
+            margin-bottom: 18px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 6px;
+            background: #e9eddd;
+        }
+
+        .card-art.pink {
+            background: #f2e5dc;
+        }
+
+        .card-art.cream {
+            background: #eee9d8;
+        }
+
+        .mini-cup {
+            width: 94px;
+            height: 125px;
+            position: relative;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            border-top: 0;
+            border-radius: 7px 7px 23px 23px;
+            background: linear-gradient(to bottom, #f4efdc 0 28%, #91ad63 28% 100%);
+            box-shadow: 0 10px 18px rgba(48, 64, 42, 0.14);
+            transform: rotate(4deg);
+        }
+
+        .mini-cup::before {
+            position: absolute;
+            top: -8px;
+            left: -6px;
+            width: calc(100% + 12px);
+            height: 12px;
+            border: 3px solid white;
+            border-radius: 50%;
+            background: #e7dfc7;
+            content: "";
+        }
+
+        .pink .mini-cup {
+            background: linear-gradient(to bottom, #f4efdc 0 28%, #bf8e80 28% 48%, #8aa65c 48% 100%);
+        }
+
+        .cream .mini-cup {
+            background: linear-gradient(to bottom, #f4efdc 0 28%, #a9bd79 28% 100%);
+        }
+
+        .drink-card h3 {
+            margin: 0 0 8px;
+            font-size: 1.35rem;
+        }
+
+        .drink-card p {
+            min-height: 48px;
+            margin: 0 0 16px;
+            color: #697466;
+            font-size: 0.94rem;
+            line-height: 1.55;
+        }
+
+        .card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .price {
+            color: #476a3d;
+            font-weight: 700;
+        }
+
+        .add-button {
+            padding: 9px 13px;
+            border: 1px solid #8da17e;
+            border-radius: 4px;
+            background: transparent;
+            color: #385633;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .add-button:hover,
+        .add-button:focus-visible {
+            background: #e8eddf;
+        }
+
+        .story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .story-art {
+            min-height: 260px;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
+            background: #dfe8d5;
+            color: #45623c;
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .story h2 {
+            margin: 0 0 16px;
+            font-size: 2.5rem;
+            font-weight: 500;
+        }
+
+        .story p {
+            color: #697466;
+            line-height: 1.8;
+        }
+
+        footer {
+            padding: 26px 24px;
+            background: #263c2b;
+            color: #f7f4e8;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        #cart-message {
+            min-height: 1.4em;
+            margin: 20px 0 0;
+            color: #345332;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                padding-top: 56px;
+            }
+
+            .hero-art {
+                min-height: 300px;
+            }
+
+            .drink-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin: auto;
+            }
+
+            .story {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .story-art {
+                min-height: 210px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                min-height: 64px;
+                padding: 12px 16px;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: 12px;
+            }
+
+            .section {
+                padding: 56px 18px;
+                scroll-margin-top: 108px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">A little green goodness, made fresh every day</div>
+    <header>
+        <nav aria-label="Main navigation">
+            <a class="brand" href="#home">Matcha Meadow</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Our drinks</a></li>
+                <li><a href="#story">Our story</a></li>
+                <li><button class="cart" type="button" aria-label="Shopping bag, 0 items">Bag (<span id="cart-count">0</span>)</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div>
+                <p class="eyebrow">Slow moments. Bright mornings.</p>
+                <h1>Your daily dose of green.</h1>
+                <p class="hero-copy">Meet your new favorite ritual. We whisk vibrant, thoughtfully sourced matcha into lovely drinks made to make your day a little brighter.</p>
+                <a class="button" href="#menu">Find your matcha</a>
+            </div>
+            <div class="hero-art" role="img" aria-label="Illustration of a fresh iced matcha latte">
+                <div class="drink"><span class="drink-label">matcha<br>meadow</span></div>
+            </div>
+        </section>
+
+        <section class="section menu-section" id="menu">
+            <div class="section-inner">
+                <p class="eyebrow" style="text-align: center;">Whisked with care</p>
+                <h2 class="section-heading">Meet the matcha menu</h2>
+                <p class="section-intro">From creamy classics to a fruity twist, every cup is made fresh and finished with a little love.</p>
+                <div class="drink-grid">
+                    <article class="drink-card">
+                        <div class="card-art"><div class="mini-cup" role="img" aria-label="Illustrated iced matcha latte"></div></div>
+                        <h3>Iced Matcha Latte</h3>
+                        <p>Our smooth ceremonial-style matcha over ice with your choice of milk.</p>
+                        <div class="card-bottom">
+                            <span class="price">$5.50</span>
+                            <button class="add-button" type="button" data-drink="Iced Matcha Latte" data-price="5.50">Add to bag</button>
+                        </div>
+                    </article>
+                    <article class="drink-card">
+                        <div class="card-art pink"><div class="mini-cup" role="img" aria-label="Illustrated strawberry matcha"></div></div>
+                        <h3>Strawberry Matcha</h3>
+                        <p>Bright matcha layered with sweet strawberry and a splash of milk.</p>
+                        <div class="card-bottom">
+                            <span class="price">$6.25</span>
+                            <button class="add-button" type="button" data-drink="Strawberry Matcha" data-price="6.25">Add to bag</button>
+                        </div>
+                    </article>
+                    <article class="drink-card">
+                        <div class="card-art cream"><div class="mini-cup" role="img" aria-label="Illustrated vanilla matcha"></div></div>
+                        <h3>Vanilla Cloud Matcha</h3>
+                        <p>Earthy matcha topped with a soft, lightly sweet vanilla foam.</p>
+                        <div class="card-bottom">
+                            <span class="price">$6.00</span>
+                            <button class="add-button" type="button" data-drink="Vanilla Cloud Matcha" data-price="6.00">Add to bag</button>
+                        </div>
+                    </article>
+                </div>
+                <p id="cart-message" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <section class="section" id="story">
+            <div class="section-inner story">
+                <div class="story-art" role="img" aria-label="A calm green space inspired by matcha fields">Grown with care,<br>shared with joy.</div>
+                <div>
+                    <p class="eyebrow">A little about us</p>
+                    <h2>Good matcha, good mood.</h2>
+                    <p>At Matcha Meadow, we believe a great drink can turn an everyday moment into something special. We carefully prepare each cup with vibrant matcha and simple, lovely ingredients.</p>
+                    <a class="button" href="#menu">Explore the menu</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Matcha Meadow. Made with care, one cup at a time.</p>
+    </footer>
+
+    <script>
+        var cartCount = 0;
+        var cartItems = [];
+        var cartCountElement = document.getElementById("cart-count");
+        var cartButton = document.querySelector(".cart");
+        var cartMessage = document.getElementById("cart-message");
+
+        document.querySelectorAll(".add-button").forEach(function (button) {
+            button.addEventListener("click", function () {
+                cartCount += 1;
+                cartItems.push({
+                    name: button.dataset.drink,
+                    price: Number(button.dataset.price)
+                });
+                cartCountElement.textContent = cartCount;
+                cartButton.setAttribute("aria-label", "Shopping bag, " + cartCount + " items");
+                cartMessage.textContent = button.dataset.drink + " added to your bag.";
+            });
+        });
+
+        cartButton.addEventListener("click", function () {
+            if (cartItems.length === 0) {
+                cartMessage.textContent = "Your bag is empty. Choose a matcha to get started.";
+                return;
+            }
+
+            var total = cartItems.reduce(function (sum, item) {
+                return sum + item.price;
+            }, 0);
+            cartMessage.textContent = cartCount + " drink" + (cartCount === 1 ? "" : "s") +
+                " in your bag. Total: $" + total.toFixed(2) + ".";
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                var target = document.querySelector(link.getAttribute("href"));
+                if (target) {
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: "smooth" });
+                    history.replaceState(null, "", link.getAttribute("href"));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

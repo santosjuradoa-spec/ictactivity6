@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1 | Santos Profile</title>
+    <style>
+        :root {
+            --sky: #dff1ff;
+            --navy: #183b55;
+            --panel: #ffffff;
+            --accent: #4c8dbd;
+            --text: #23313d;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, var(--sky), #f7fbff);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+        }
+
+        .container {
+            width: min(760px, 90vw);
+            background: var(--panel);
+            padding: 32px 28px 40px;
+            border-radius: 18px;
+            box-shadow: 0 12px 28px rgba(24, 59, 85, 0.15);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: #edf5ff;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            background: #dbeeff;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            color: var(--navy);
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        h2 {
+            margin: 0 0 8px;
+            color: #4d7da5;
+            text-align: center;
+            font-size: 1.6rem;
+        }
+
+        h3 {
+            margin: 0 0 18px;
+            color: #2d4d5c;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .card {
+            padding: 18px 20px;
+            border-left: 5px solid var(--accent);
+            background: #f4f9ff;
+            border-radius: 10px;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <nav>
+            <a href="page1.html">Page 1</a>
+            <a href="page2.html">Page 2</a>
+            <a href="page3.html">Page 3</a>
+        </nav>
+
+        <h1>SANTOS</h1>
+        <h2>VICTORIA</h2>
+        <h3>JURADO</h3>
+
+        <div class="card">
+            <strong>Favorite Subject:</strong> Araling Panlipunan.<br>
+            I enjoy learning about history, society, and culture because it helps me understand the world around me.
+        </div>
+    </main>
+</body>
+</html>

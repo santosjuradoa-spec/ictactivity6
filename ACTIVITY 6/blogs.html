@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes for a Brighter Day | Matcha Meadow</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #fbfaf5;
+            color: #293d2d;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: rgba(251, 250, 245, 0.97);
+            border-bottom: 1px solid #e7e8dc;
+        }
+
+        nav {
+            width: min(1080px, 100%);
+            min-height: 70px;
+            margin: auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            color: #3c613e;
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .menu {
+            display: flex;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu a {
+            color: #435346;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .menu a:hover,
+        .menu a:focus-visible,
+        .menu a[aria-current="page"] {
+            color: #6f8c4d;
+        }
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            min-height: clamp(500px, 68vw, 700px);
+            padding: 80px 24px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #294331;
+            color: #fffdf5;
+        }
+
+        .hero::after {
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(16, 35, 24, 0.88) 0%, rgba(19, 39, 26, 0.68) 48%, rgba(18, 36, 25, 0.12) 100%),
+                linear-gradient(0deg, rgba(19, 38, 27, 0.28), transparent 50%);
+            content: "";
+        }
+
+        .hero-image {
+            position: absolute;
+            z-index: -2;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 54%;
+        }
+
+        .hero-inner {
+            width: min(1000px, 100%);
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: #6c854d;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .hero .eyebrow {
+            color: #d3dfb8;
+        }
+
+        h1,
+        h2,
+        h3,
+        blockquote {
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        h1 {
+            max-width: 700px;
+            margin: 0 0 18px;
+            font-size: clamp(3.2rem, 7vw, 5.2rem);
+            font-weight: 500;
+            letter-spacing: -0.055em;
+            line-height: 0.98;
+        }
+
+        .hero-intro {
+            max-width: 570px;
+            margin: 0 0 28px;
+            color: rgba(255, 253, 245, 0.86);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 13px 20px;
+            border-radius: 999px;
+            background: #edf0d8;
+            color: #294331;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 150ms ease, transform 150ms ease;
+        }
+
+        .hero-button:hover,
+        .hero-button:focus-visible {
+            background: #fffef3;
+            transform: translateY(-2px);
+        }
+
+        .quote-card {
+            width: min(760px, calc(100% - 36px));
+            margin: -30px auto 0;
+            padding: 36px 32px 30px;
+            position: relative;
+            border-radius: 10px;
+            background: #fffefa;
+            box-shadow: 0 10px 32px rgba(43, 61, 40, 0.1);
+            text-align: center;
+        }
+
+        .quote-mark {
+            margin: 0;
+            color: #9caf7e;
+            font-family: Georgia, serif;
+            font-size: 4.5rem;
+            line-height: 0.8;
+        }
+
+        blockquote {
+            margin: 12px 0 18px;
+            color: #344c35;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            margin: 0;
+            color: #71806d;
+            font-size: 0.95rem;
+        }
+
+        .quote-button {
+            margin-top: 24px;
+            padding: 11px 17px;
+            border: 1px solid #82956b;
+            border-radius: 5px;
+            background: transparent;
+            color: #3d603d;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .quote-button:hover,
+        .quote-button:focus-visible {
+            background: #edf1e7;
+        }
+
+        .articles {
+            width: min(1000px, 100%);
+            margin: auto;
+            padding: 68px 24px 82px;
+        }
+
+        .articles h2 {
+            margin: 0 0 12px;
+            font-size: 2.2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .section-intro {
+            max-width: 580px;
+            margin: 0 auto 32px;
+            color: #697567;
+            line-height: 1.65;
+            text-align: center;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        article {
+            padding: 24px;
+            border: 1px solid #e9e9df;
+            border-radius: 8px;
+            background: #fffefa;
+        }
+
+        article .category {
+            margin: 0 0 11px;
+            color: #778b5b;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        article h3 {
+            margin: 0 0 12px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        article p:last-child {
+            margin: 0;
+            color: #667263;
+            font-size: 0.96rem;
+            line-height: 1.65;
+        }
+
+        footer {
+            padding: 24px;
+            background: #2b432f;
+            color: #f6f4e8;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 680px) {
+            nav {
+                min-height: 64px;
+                padding: 12px 18px;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .menu {
+                width: 100%;
+                justify-content: space-between;
+                gap: 12px;
+            }
+
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-card {
+                padding: 30px 22px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <a class="brand" href="home.html">Matcha Meadow</a>
+            <ul class="menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blogs.html" aria-current="page">Blogs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img class="hero-image" src="assets/matcha-blog-powder.jpeg" alt="Two ceramic bowls filled with matcha powder" fetchpriority="high">
+            <div class="hero-inner">
+                <p class="eyebrow">The Matcha Meadow journal</p>
+                <h1>A little matcha, a mindful moment.</h1>
+                <p class="hero-intro">Stories, simple recipes, and small rituals for enjoying matcha at home.</p>
+                <a class="hero-button" href="#journal">Read the journal</a>
+            </div>
+        </section>
+
+            <section class="quote-card" aria-label="A matcha note">
+                <p class="quote-mark" aria-hidden="true">&ldquo;</p>
+                <blockquote id="quote-text">A good cup begins with a moment to slow down.</blockquote>
+                <p class="quote-author" id="quote-author">A Matcha Meadow reminder</p>
+                <button class="quote-button" id="new-quote" type="button">Another little matcha note</button>
+            </section>
+
+            <section class="articles" id="journal">
+                <p class="eyebrow" style="text-align: center;">Whisk, sip, and make it your own</p>
+                <h2>Journal notes for everyday matcha</h2>
+                <p class="section-intro">Explore a few simple ways to prepare matcha and enjoy it in your next cup.</p>
+                <div class="article-grid">
+                    <article>
+                        <p class="category">The basics</p>
+                        <h3>A simple whisk, a smoother cup</h3>
+                        <p>Sift matcha into a bowl, add a splash of warm water, and whisk in a quick zigzag until smooth. Add more water or milk to suit your cup.</p>
+                    </article>
+                    <article>
+                        <p class="category">Make it iced</p>
+                        <h3>Build an iced matcha latte</h3>
+                        <p>Whisk matcha with a little warm water first, then pour it over a glass of ice and your milk of choice. Stir and adjust it to your taste.</p>
+                    </article>
+                    <article>
+                        <p class="category">A coffee twist</p>
+                        <h3>Try a matcha-and-coffee pour</h3>
+                        <p>Add milk and ice to a glass, pour in prepared matcha, then finish with espresso. Stir together or leave the layers as they are.</p>
+                    </article>
+                </div>
+            </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Matcha Meadow. A little kindness for your day.</p>
+    </footer>
+
+    <script>
+        var quotes = [
+            "A good cup begins with a moment to slow down.",
+            "Start with a smooth whisk and make the rest your own.",
+            "A little green can brighten an everyday break.",
+            "Your matcha ritual can be as simple as you like."
+        ];
+        var quoteIndex = 0;
+        var quoteText = document.getElementById("quote-text");
+        var quoteButton = document.getElementById("new-quote");
+
+        quoteButton.addEventListener("click", function () {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            quoteText.textContent = quotes[quoteIndex];
+        });
+    </script>
+</body>
+</html>
